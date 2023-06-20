@@ -1,1 +1,16 @@
-<h1 class="text-3xl font-bold underline">Hello Angular!</h1>
+<ng-container *ngIf="videoEnded">
+  <app-navbar></app-navbar>
+  <app-game-card-list></app-game-card-list>
+</ng-container>
+
+<div *ngIf="!videoEnded" class="h-screen w-full bg-gray-900">
+  <video
+    class="h-screen w-full"
+    autoplay
+    onloadedmetadata="this.muted = true"
+    oncanplay="this.play()"
+    (ended)="onVideoEnded()"
+  >
+    <source src="../../assets/snapaddy-onstart.mp4" type="video/mp4" />
+  </video>
+</div>
