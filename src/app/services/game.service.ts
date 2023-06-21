@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Game, GameApiResponse } from '../game-card-list/game';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,7 +15,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class GameService {
-  apiKey = 'fc80409b7ac04531bb8ea0d5337189fe';
+  apiKey = environment.apiKey;
   pageNumber = 1;
   pageSize = 15;
   apiUrl = `https://api.rawg.io/api/games?key=${this.apiKey}&page_size=${this.pageSize}`;
@@ -59,7 +60,6 @@ export class GameService {
   getNextPage(): void {
     if (this.nextPageUrl) {
       this.getGames(this.pageNumber + 1);
-      this.pageNumber += 1;
     }
   }
 
