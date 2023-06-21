@@ -1,0 +1,92 @@
+<div class="flex flex-row justify-center items-center">
+  <div>
+    <button
+      class="border w-6 h-6"
+      *ngIf="pageRange !== 1 && isPageAvailable(pageRange - 4)"
+      (click)="getGames(1)"
+    >
+      1
+    </button>
+
+    <ng-container *ngIf="lastPage$ | async as lastPage">
+      <button
+        class="border px-2 h-6"
+        (click)="displayPreviousPages()"
+        *ngIf="isPageAvailable(pageRange - 4) && pageRange - 4 > 1"
+      >
+        ...
+      </button>
+      <button
+        class="border px-2 h-6"
+        (click)="getGames(pageRange - 3)"
+        *ngIf="isPageAvailable(pageRange - 3)"
+      >
+        {{ pageRange - 3 }}
+      </button>
+
+      <button
+        class="border px-2 h-6"
+        (click)="getGames(pageRange - 2)"
+        *ngIf="isPageAvailable(pageRange - 2)"
+      >
+        {{ pageRange - 2 }}
+      </button>
+
+      <button
+        class="border px-2 h-6"
+        (click)="getGames(pageRange - 1)"
+        *ngIf="isPageAvailable(pageRange - 1)"
+      >
+        {{ pageRange - 1 }}
+      </button>
+      <button
+        class="border px-2 h-6"
+        [class.bg-slate-300]="activePage === pageRange"
+        (click)="getGames(pageRange)"
+        *ngIf="isPageAvailable(pageRange)"
+      >
+        {{ pageRange }}
+      </button>
+
+      <button
+        class="border px-2 h-6"
+        (click)="getGames(pageRange + 1)"
+        *ngIf="isPageAvailable(pageRange + 1) && pageRange + 1 !== lastPage"
+      >
+        {{ pageRange + 1 }}
+      </button>
+
+      <button
+        class="border px-2 h-6"
+        (click)="getGames(pageRange + 2)"
+        *ngIf="isPageAvailable(pageRange + 2) && pageRange + 2 !== lastPage"
+      >
+        {{ pageRange + 2 }}
+      </button>
+
+      <button
+        class="border px-2 h-6"
+        (click)="getGames(pageRange + 3)"
+        *ngIf="isPageAvailable(pageRange + 3) && pageRange + 3 !== lastPage"
+      >
+        {{ pageRange + 3 }}
+      </button>
+
+      <button
+        class="border px-2 h-6"
+        (click)="displayAdditionalPages()"
+        *ngIf="isPageAvailable(pageRange + 4) && pageRange + 4 < lastPage"
+      >
+        ...
+      </button>
+
+      <button
+        class="border h-6 px-2"
+        (click)="getGames(lastPage)"
+        *ngIf="isPageAvailable(lastPage) && pageRange !== lastPage"
+      >
+        {{ lastPage }}
+      </button>
+    </ng-container>
+  </div>
+</div>
