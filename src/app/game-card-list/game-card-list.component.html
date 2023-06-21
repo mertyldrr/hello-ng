@@ -1,0 +1,14 @@
+<div>
+  <div class="grid grid-cols-5 gap-2 p-4">
+    <ng-container *ngFor="let game of games$ | async">
+      <app-game-card [game]="game"></app-game-card>
+    </ng-container>
+  </div>
+  <app-pagination
+    [pageRange]="pageRange"
+    [activePage]="activePage"
+    [getGames]="getGames.bind(this)"
+    [displayAdditionalPages]="displayAdditionalPages.bind(this)"
+    [displayPreviousPages]="displayPreviousPages.bind(this)"
+  ></app-pagination>
+</div>
