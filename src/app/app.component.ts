@@ -7,6 +7,8 @@ import {
 } from '@angular/common';
 import { GameCardListComponent } from './game-card-list/game-card-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { radixStar, radixStarFilled } from '@ng-icons/radix-icons';
+import { provideIcons } from '@ng-icons/core';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +23,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     GameCardListComponent,
     NavbarComponent,
   ],
+  viewProviders: [provideIcons({ radixStar, radixStarFilled })],
 })
 export class AppComponent {
   title = 'hello-ng';
