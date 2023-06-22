@@ -1,1 +1,46 @@
-<p>game-detail works!</p>
+<div class="flex flex-row justify-center py-20 space-x-10">
+  <div class="flex flex-col justify-center items-center space-y-4 basis-1/2">
+    <ng-container *ngIf="game.background_image">
+      <img
+        class="w-[700px] shadow-xl rounded-lg transform transition-transform duration-300 hover:scale-105"
+        src="{{ game.background_image }}"
+      />
+    </ng-container>
+
+    <div>
+      <div class="text-lg font-bold text-center truncate w-full">
+        {{ game.name }}
+      </div>
+    </div>
+    <div
+      class="flex flex-row items-center justify-center space-x-2"
+      *ngIf="game.metacritic"
+    >
+      <img class="w-1/4" src="assets/metacritic.svg" />
+      <div class="text-lg font-bold">
+        {{ game.metacritic }}
+      </div>
+    </div>
+    <div class="flex flex-row flex-wrap space-x-3 justify-center items-center">
+      <ng-container *ngFor="let tag of game.tags">
+        <div
+          class="flex flex-row justify-center items-center rounded-lg bg-slate-200 space-x-2 px-4 py-2 my-2"
+        >
+          <div class="text-[12px] font-semibold">{{ tag.name }}</div>
+          <img class="w-10 h-8 rounded-md" src="{{ tag.image_background }}" />
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="basis-1/4 flex flex-col items-center space-y-4">
+    <div class="text-[14px]">
+      {{ game.description_raw }}
+    </div>
+    <button
+      (click)="navigateToHome()"
+      class="bg-[#0A184A] py-2 px-6 rounded-md text-white"
+    >
+      Go back
+    </button>
+  </div>
+</div>
