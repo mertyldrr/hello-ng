@@ -26,9 +26,12 @@ export class GameService {
   prevPageUrl: string | undefined;
   constructor(private http: HttpClient) {}
 
-  getGames(pageNumber: number = 1): Observable<Game[]> {
-    const url = `${this.apiUrl}&page=${pageNumber}`;
-    console.log(url);
+  getGames(pageNumber: number = 1, searchQuery?: string): Observable<Game[]> {
+    let url = `${this.apiUrl}&page=${pageNumber}`;
+    if (searchQuery) {
+      url = `${url}&search=${searchQuery}`;
+    }
+    console.log('API get games request ==>', url);
     return this.http.get<GameApiResponse>(url, httpOptions).pipe(
       map((response) => {
         this.count.next(response.count);
