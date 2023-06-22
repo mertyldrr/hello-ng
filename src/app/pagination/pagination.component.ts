@@ -21,7 +21,6 @@ export class PaginationComponent implements OnInit {
 
   ngOnInit(): void {
     this.lastPage$ = this.gameService.getLastPage();
-    console.log(this.activePage);
   }
   isPageAvailable(page: number): boolean {
     let isAvailable = false;

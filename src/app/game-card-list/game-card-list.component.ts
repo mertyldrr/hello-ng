@@ -24,7 +24,6 @@ import { Router } from '@angular/router';
 })
 export class GameCardListComponent implements OnInit {
   games$!: Observable<Game[]>;
-  filteredGames$!: Observable<Game[]>;
   pageRange = 1;
   activePage = 1;
   showAdditionalPages = false;
