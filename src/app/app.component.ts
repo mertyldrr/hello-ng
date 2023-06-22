@@ -9,6 +9,7 @@ import { GameCardListComponent } from './game-card-list/game-card-list.component
 import { NavbarComponent } from './navbar/navbar.component';
 import { radixStar, radixStarFilled } from '@ng-icons/radix-icons';
 import { provideIcons } from '@ng-icons/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ import { provideIcons } from '@ng-icons/core';
     NgSwitchCase,
     GameCardListComponent,
     NavbarComponent,
+    RouterOutlet,
   ],
   viewProviders: [provideIcons({ radixStar, radixStarFilled })],
 })

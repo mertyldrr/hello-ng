@@ -1,8 +1,7 @@
 <ng-container *ngIf="videoEnded">
   <app-navbar></app-navbar>
-  <app-game-card-list></app-game-card-list>
+  <router-outlet></router-outlet>
 </ng-container>
-
 <div *ngIf="!videoEnded" class="h-screen w-full bg-gray-900">
   <video
     class="h-screen w-full"
