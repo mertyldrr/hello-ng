@@ -53,31 +53,40 @@ export class GameService {
     );
   }
 
-  async getGameDetails(gameId: string): Promise<any> {
+  async getGameDetails(gameId: string): Promise<Game> {
     let url = `${this.apiUrlGameDetails}/${gameId}?key=${this.apiKey}`;
-    const gameDetails$ = await this.http.get(url, httpOptions);
-    return await lastValueFrom(gameDetails$);
+    const gameDetails: any = await lastValueFrom(
+      this.http.get(url, httpOptions)
+    );
+    const game: Game = {
+      id: gameDetails.id,
+      background_image: gameDetails.background_image,
+      name: gameDetails.name,
+      released: gameDetails.released,
+      metacritic: gameDetails.metacritic,
+    };
+
+    return game;
   }
 
-  getCurrentPage(): number {
-    return this.pageNumber;
+  async fetchGamesByIds(gameIds: string[]): Promise<any[]> {
+    const gameDetailsPromises: Promise<Game>[] = [];
+
+    for (const gameId of gameIds) {
+      gameDetailsPromises.push(this.getGameDetails(gameId));
+    }
+
+    try {
+      const gameDetails: any[] = await Promise.all(gameDetailsPromises);
+      return gameDetails;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
   }
 
   getCount(): Observable<number | undefined> {
     return this.count.asObservable();
-  }
-
-  getNextPage(): void {
-    if (this.nextPageUrl) {
-      this.getGames(this.pageNumber + 1);
-    }
-  }
-
-  getPrevPage(): void {
-    if (this.prevPageUrl) {
-      this.getGames(this.pageNumber - 1);
-      this.pageNumber -= 1;
-    }
   }
 
   getLastPage(): Observable<number | undefined> {
