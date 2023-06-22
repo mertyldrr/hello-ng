@@ -1,4 +1,9 @@
-<div>
+<div class="flex flex-col justify-center items-center py-4">
+  <app-search-bar
+    [searchQuery]="searchQuery"
+    [getGames]="getGames.bind(this)"
+    [updateSearchQuery]="updateSearchQuery.bind(this)"
+  ></app-search-bar>
   <div class="grid grid-cols-5 gap-2 p-4">
     <ng-container *ngFor="let game of games$ | async">
       <app-game-card [game]="game"></app-game-card>
