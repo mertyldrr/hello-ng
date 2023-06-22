@@ -1,6 +1,6 @@
 <div class="flex flex-col justify-center items-center py-4">
   <div class="grid grid-cols-5 gap-2 p-4">
-    <ng-container *ngFor="let game of filteredGames$ | async">
+    <ng-container *ngFor="let game of collection">
       <app-game-card [game]="game"></app-game-card>
     </ng-container>
   </div>

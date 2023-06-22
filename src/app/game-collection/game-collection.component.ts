@@ -13,24 +13,15 @@ import { GameCardComponent } from '../game-card/game-card.component';
   styleUrls: ['./game-collection.component.css'],
 })
 export class GameCollectionComponent implements OnInit {
-  filteredGames$!: Observable<Game[]>;
+  collection: Game[] = [];
   allKeys: string[] = [];
   constructor(private gameService: GameService) {}
 
-  ngOnInit(): void {
-    this.allKeys = Object.keys({ ...localStorage });
-    this.filterGames();
-    console.log(this.allKeys);
-  }
-
-  filterGames(pageNumber: number = 1): void {
-    this.filteredGames$ = this.gameService.getGames(pageNumber).pipe(
-      map((games: Game[]) => {
-        console.log(games);
-        return games.filter((game) =>
-          this.allKeys.includes(game.id.toString())
-        );
-      })
+  async ngOnInit(): Promise<void> {
+    this.allKeys = Object.keys({ ...localStorage }).filter(
+      // to discard default 3 keys that starts with j
+      (gameId) => !gameId.startsWith('j')
     );
+    this.collection = await this.gameService.fetchGamesByIds(this.allKeys);
   }
 }
