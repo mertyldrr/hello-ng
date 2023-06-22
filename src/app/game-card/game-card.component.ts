@@ -2,16 +2,19 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Game } from '../game-card-list/game';
 import { NgIconComponent } from '@ng-icons/core';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-game-card',
   standalone: true,
-  imports: [CommonModule, NgIconComponent],
+  imports: [CommonModule, NgIconComponent, RouterModule],
   templateUrl: './game-card.component.html',
   styleUrls: ['./game-card.component.css'],
 })
 export class GameCardComponent {
   @Input() game: Game = {} as Game;
+
+  constructor(private router: Router) {}
 
   updateCollection(gameId: string) {
     let game = localStorage.getItem(gameId);

@@ -4,9 +4,10 @@ import { GameService } from '../services/game.service';
 import { GameCardComponent } from '../game-card/game-card.component';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { Game } from './game';
-import { Observable } from 'rxjs';
+import { Observable, map, of, take } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game-card-list',
@@ -23,11 +24,13 @@ import { SearchBarComponent } from '../search-bar/search-bar.component';
 })
 export class GameCardListComponent implements OnInit {
   games$!: Observable<Game[]>;
+  filteredGames$!: Observable<Game[]>;
   pageRange = 1;
   activePage = 1;
   showAdditionalPages = false;
   searchQuery: string = '';
-  constructor(private gameService: GameService) {}
+  allKeys: string[] = [];
+  constructor(private gameService: GameService, private router: Router) {}
 
   ngOnInit(): void {
     this.games$ = this.gameService.getGames();
@@ -54,5 +57,9 @@ export class GameCardListComponent implements OnInit {
   updateSearchQuery(event: any) {
     console.log(event.target.value, 'updateSearchQuery');
     this.searchQuery = event.target.value;
+  }
+
+  navigateToCollection() {
+    this.router.navigate(['/collection']);
   }
 }

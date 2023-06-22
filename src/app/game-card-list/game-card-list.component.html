@@ -1,9 +1,17 @@
 <div class="flex flex-col justify-center items-center py-4">
-  <app-search-bar
-    [searchQuery]="searchQuery"
-    [getGames]="getGames.bind(this)"
-    [updateSearchQuery]="updateSearchQuery.bind(this)"
-  ></app-search-bar>
+  <div class="flex flex-row items-center space-x-4">
+    <app-search-bar
+      [searchQuery]="searchQuery"
+      [getGames]="getGames.bind(this)"
+      [updateSearchQuery]="updateSearchQuery.bind(this)"
+    ></app-search-bar>
+    <button
+      (click)="navigateToCollection()"
+      class="bg-[#0A184A] px-6 rounded-md text-white h-12"
+    >
+      Go to collection
+    </button>
+  </div>
   <div class="grid grid-cols-5 gap-2 p-4">
     <ng-container *ngFor="let game of games$ | async">
       <app-game-card [game]="game"></app-game-card>
