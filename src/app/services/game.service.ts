@@ -77,7 +77,7 @@ export class GameService {
     }
 
     try {
-      const gameDetails: any[] = await Promise.all(gameDetailsPromises);
+      const gameDetails: Game[] = await Promise.all(gameDetailsPromises);
       return gameDetails;
     } catch (error) {
       console.log(error);

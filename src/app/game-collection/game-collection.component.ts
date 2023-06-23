@@ -14,14 +14,14 @@ import { GameCardComponent } from '../game-card/game-card.component';
 })
 export class GameCollectionComponent implements OnInit {
   collection: Game[] = [];
-  allKeys: string[] = [];
+  starredGames: string[] = [];
   constructor(private gameService: GameService) {}
 
   async ngOnInit(): Promise<void> {
-    this.allKeys = Object.keys({ ...localStorage }).filter(
+    this.starredGames = Object.keys(localStorage).filter(
       // to discard default 3 keys that starts with j
       (gameId) => !gameId.startsWith('j')
     );
-    this.collection = await this.gameService.fetchGamesByIds(this.allKeys);
+    this.collection = await this.gameService.fetchGamesByIds(this.starredGames);
   }
 }
