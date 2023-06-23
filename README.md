@@ -11,7 +11,7 @@ This project is about getting to know Angular and its features.
 
 
 ## Technology Stack
-This project is created using Angular, Typescript and [tailwindcss](https://tailwindcss.com).
+This project is created using Angular, Typescript, and [tailwindcss](https://tailwindcss.com).
 
 ## Features
 
@@ -22,7 +22,7 @@ This project is created using Angular, Typescript and [tailwindcss](https://tail
 
 ## Installation and Usage
 
-1. Clone the repository: `git clone https://github.com/mertyldrr/tech-radar.git`
+1. Clone the repository: `git clone https://github.com/mertyldrr/hello-ng.git`
 2. Change to the project directory: `cd hello-ng`
 3. Install dependencies using: `npm i`
 4. Run the project locally using: `ng serve or npm start`
