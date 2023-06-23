@@ -4,4 +4,9 @@
       <app-game-card [game]="game"></app-game-card>
     </ng-container>
   </div>
+  <ng-container *ngIf="!collection || collection.length === 0">
+    <div class="text-2xl">
+      Star your favorite games to add them to your collection
+    </div>
+  </ng-container>
 </div>
