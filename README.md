@@ -11,7 +11,7 @@ This project is about getting to know Angular and its features.
 
 
 ## Technology Stack
-This project is created using Angular, Typescript, [tailwindcss](https://tailwindcss.com).
+This project is created using Angular, Typescript and [tailwindcss](https://tailwindcss.com).
 
 ## Features
 
