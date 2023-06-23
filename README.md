@@ -1,27 +1,35 @@
-# HelloNg
+# Hello Ng
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+This project is about getting to know Angular and its features.
 
-## Development server
+# Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Technology Stack](#technology-stack)
+- [Features](#features)
+- [Installation and Usage](#installation-and-usage)
+- [License](#license)
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Technology Stack
+This project is created using Angular, Typescript, [tailwindcss](https://tailwindcss.com).
 
-## Build
+## Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Display games & ratings.
+- Game details.
+- You can add a game to your collection by starring the game. It is possible to view games in your collection.
+- Simple routing.
 
-## Running unit tests
+## Installation and Usage
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Clone the repository: `git clone https://github.com/mertyldrr/tech-radar.git`
+2. Change to the project directory: `cd hello-ng`
+3. Install dependencies using: `npm i`
+4. Run the project locally using: `ng serve or npm start`
+5. Open your browser and visit: `http://localhost:4200`
 
-## Running end-to-end tests
+## License
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Indicate the license under which your project is distributed. For example:
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+This project is licensed under the [MIT License](LICENSE).
